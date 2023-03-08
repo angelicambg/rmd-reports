@@ -1,0 +1,32 @@
+---
+output: pdf_document
+---
+
+```{r character, echo=FALSE, results='asis'}
+
+# use unique() instead of levels if it is a character variable
+list_to_iterate <- levels(ToothGrowth$supp) 
+
+output <- lapply(list_to_iterate, \(iterator) knitr::knit_expand('report_template_char.Rmd'))
+
+cat(
+  knitr::knit_child(text = unlist(output), envir = new.env(), quiet = TRUE)
+  )
+
+
+
+```
+
+```{r numeric, echo=FALSE, results='asis'}
+
+list_to_iterate <- unique(ToothGrowth$dose)
+
+output <- lapply(list_to_iterate, \(iterator) knitr::knit_expand('report_template_numeric.Rmd'))
+
+cat(
+  knitr::knit_child(text = unlist(output), envir = new.env(), quiet = TRUE)
+  )
+
+
+
+```

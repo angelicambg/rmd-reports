@@ -1,0 +1,11 @@
+
+The histogram for supp = `r "{{iterator}}"`
+
+```{r chunkname-{{iterator}} }
+dat <- subset(ToothGrowth, supp == "{{iterator}}")
+if (nrow(dat) > 0) {
+  plot(dat$len, dat$dose)
+}
+```
+
+\newpage

@@ -1,0 +1,11 @@
+
+The histogram for dose = `r {{iterator}}`
+
+```{r chunkname-{{iterator}} }
+dat <- subset(ToothGrowth, dose == {{iterator}})
+if (nrow(dat) > 0) {
+  hist(dat$len)
+}
+```
+
+\newpage
